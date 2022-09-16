@@ -36,12 +36,12 @@ export const text = StyleSheet.create({
 		fontWeight: 'bold'
 	},
 	h3: {
-		fontSize: 15,
-		lineHeight: 15 * 1.5,
+		fontSize: 16,
+		lineHeight: 16 * 1.5,
 	},
 	p: {
-		fontSize: 13,
-		lineHeight: 14 * 1.1,
+		fontSize: 15,
+		lineHeight: 15 * 1.1,
 	},
 	caption: {
 		fontSize: 11,
@@ -82,6 +82,10 @@ export const layout = StyleSheet.create({
 		flexBasis: 140,
 		height: 140,
 		margin: 7
+	},
+	full: {
+		flex: 1,
+		alignSelf: 'stretch'
 	},
 	centered: {
 		alignItems: 'center',
