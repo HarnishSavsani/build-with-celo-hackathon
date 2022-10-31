@@ -1,6 +1,6 @@
 import * as Linking from 'expo-linking'
 
-export default {
+export const LinkingConfiguration = {
 	prefixes: [Linking.makeUrl('/')],
 	config: {
 		screens: {
@@ -20,6 +20,8 @@ export default {
 							UbeswapScreen: 'ubeswap',
 							BlockExplorerScreen: 'explorer',
 							PollenScreen: 'pollen',
+							CarbonOffsetScreen: 'carbonoffset',
+							ImpactMarketScreen: 'impactmarket',
 							PoofCashScreen: 'poofcash',
 						},
 					},

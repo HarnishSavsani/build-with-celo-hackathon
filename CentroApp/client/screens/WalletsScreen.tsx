@@ -4,12 +4,12 @@ import { layout, text } from '../styles/styles'
 
 import { ScrollView, View } from 'react-native'
 import { Card } from '../components/ThemedComponents'
-import WalletStatus from '../components/WalletStatus'
+import { WalletStatus } from '../components/WalletStatus'
 
-export default function WalletsScreen() {
+export function WalletsScreen() {
 	return (
 		<ScrollView style={layout.container}>
-			<Card>
+			<Card style={layout.centered}>
 				<WalletStatus />
 			</Card>
 		</ScrollView>

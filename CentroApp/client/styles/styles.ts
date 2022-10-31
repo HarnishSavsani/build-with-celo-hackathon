@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native'
+import { Spacer } from '../components/ThemedComponents'
 
 
 const tintColorLight = '#2f95dc'
@@ -6,6 +7,8 @@ const tintColorDark = '#fff'
 
 export const themes = {
 	light: {
+		screenBackground: 'hsla(0, 0%, 95%, 1.0)',
+		menuBackground: 'hsla(0, 0%, 100%, 1.0)',
 		text: 'hsla(0, 0%, 0%, 1.0)',
 		cardBackground: 'hsla(0, 0%, 100%, 1.0)',
 		cardShadow: 'hsla(0, 0%, 50%, 1.0)',
@@ -17,14 +20,16 @@ export const themes = {
 		sliderTrack: 'hsla(0, 0%, 0%, 0.1)',
 		sliderTrackTint: tintColorLight,
 		inputBackground: 'hsla(0, 0%, 0%, 0.04)',
-		buttonBackground: 'hsla(190, 30%, 90%, 1.0)', // 'hsla(190, 40%, 90%, 1.0)'
+		buttonBackground: 'hsla(200, 30%, 90%, 1.0)', // 'hsla(190, 40%, 90%, 1.0)'
 		buttonText: 'hsla(0, 0%, 0%, 0.6)',
 	},
 	dark: {
-		text: 'hsla(0, 0%, 100%, 1.0)',
-		cardBackground: 'hsla(0, 0%, 10%, 1.0)',
-		cardShadow: 'hsla(0, 0%, 50%, 1.0)',
-		cardSectionBackground: 'hsla(0, 0%, 100%, 0.1)',
+		screenBackground: 'hsla(230, 28%, 14%, 1.0)', // hsla(230, 28%, 25%, 1.0)
+		menuBackground: 'hsla(230, 28%, 11%, 1.0)',
+		text: 'hsla(230, 50%, 90%, 1.0)',
+		cardBackground: 'hsla(230, 23%, 19%, 1.0)', // 'hsla(0, 0%, 10%, 1.0)'
+		cardShadow: 'hsla(0, 0%, 8%, 1.0)', // 'hsla(0, 0%, 30%, 1.0)'
+		cardSectionBackground: 'hsla(0, 0%, 0%, 0.15)', // 'hsla(0, 0%, 0%, 0.5)'
 		tint: tintColorDark,
 		tabIconDefault: '#ccc',
 		tabIconSelected: tintColorDark,
@@ -32,7 +37,7 @@ export const themes = {
 		sliderTrackTint: tintColorDark,
 		sliderTrack: 'hsla(0, 0%, 100%, 0.1)',
 		inputBackground: 'hsla(0, 0%, 100%, 0.1)',
-		buttonBackground: 'hsla(190, 30%, 20%, 1.0)',
+		buttonBackground: 'hsla(210, 20%, 28%, 1.0)', // 'hsla(210, 30%, 20%, 1.0)'
 		buttonText: 'hsla(0, 0%, 100%, 0.9)',
 	},
 }
@@ -77,18 +82,24 @@ export const text = StyleSheet.create({
 		lineHeight: 19 * 1.2,
 		fontWeight: 'bold',
 		// fontFamily: 'space-mono'
-	}
+	},
+	address: {
+		fontFamily: 'space-mono',
+		fontSize: 12,
+		lineHeight: 12 * 2
+	},
 })
 
 
-const containerSpacing = 28
+const containerSpacing = 24
 const containerInnerSpacing = 36
+const cardShadowDepth = 3
 const cardSpacing = 16
 const cardSectionSpacing = 16
 const listSpacing = 16
 const gridGap = 8
 const gridItemSize = 140
-const cardShadowDepth = 3
+const shadowDepth = 3
 
 export const layout = StyleSheet.create({
 	column: {
@@ -183,6 +194,24 @@ export const layout = StyleSheet.create({
 		borderWidth: 2,
 		borderColor: 'rgba(0, 0, 0, 0.1)'
 	},
+	shadowed: {
+		shadowOffset: {
+			width: 0,
+			height: shadowDepth
+		},
+		shadowRadius: shadowDepth,
+		shadowOpacity: 0.45,
+		elevation: shadowDepth
+	},
+	shadowedDeep: {
+		shadowOffset: {
+			width: 0,
+			height: 100
+		},
+		shadowRadius: 100,
+		shadowOpacity: 0.5,
+		elevation: 100
+	},
 	assetIcon: {
 		width: 45,
 		height: 45
@@ -191,6 +220,9 @@ export const layout = StyleSheet.create({
 		borderRadius: 8,
 		paddingVertical: 10,
 		paddingHorizontal: 20,
+		display: 'flex',
+		flexDirection: 'row',
+		alignItems: 'center'
 	},
 	buttonText: {
 		fontWeight: '600',
@@ -204,6 +236,14 @@ export const layout = StyleSheet.create({
 	},
 	buttonSmallText: {
 		fontSize: 11
+	},
+	buttonIcon: {
+		width: 18,
+		height: 18,
+		// transform: [{ translateX: -4 }],
+		// marginRight: 2
+		transform: [{ translateX: -3 }],
+		marginRight: 4
 	},
 	spaceEvenly: {
 		justifyContent: 'space-evenly'

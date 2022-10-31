@@ -5,19 +5,12 @@ import { layout, text } from '../styles/styles'
 
 import { FlatList, KeyboardAvoidingView, SectionList, ScrollView, TouchableOpacity, View } from 'react-native'
 import { Button, Card, CardSection, Container, ListSeparator, Separator, SectionSpacer, Spacer, Text, Image } from '../components/ThemedComponents'
-import Toggle from '../components/Toggle'
-import WalletStatus from '../components/WalletStatus'
-import TokenDeposit from '../components/TokenDeposit'
-import TokenWithdraw from '../components/TokenWithdraw'
+import { Toggle } from '../components/Toggle'
+import { WalletStatus } from '../components/WalletStatus'
+import { TokenRequest } from '../components/TokenRequest'
+import { TokenSend } from '../components/TokenSend'
 
-const tokenBalances = {
-	'CELO': { amount: 10 },
-	'cUSD': { amount: 200 },
-	'cEUR': { amount: 100 },
-	'mcUSD': { amount: 140 },
-	'mcEUR': { amount: 120 },
-	'cMCO2': { amount: 1000 },
-}
+import { tokenBalances } from '../state/tokenBalances'
 
 const sections = [
 	{
@@ -64,7 +57,7 @@ const sections = [
 
 const baseAssets = sections[0].data
 
-export default function AssetsScreen() {
+export function AssetsScreen() {
 	return (
 		<KeyboardAvoidingView behavior={Platform.OS == 'ios' ? 'position' : 'height'}>
 			<ScrollView>
@@ -104,7 +97,7 @@ export default function AssetsScreen() {
 												)}
 												ContentComponent={() => (
 													<View style={[layout.cardListItemToggleContent]}>
-														<DepositWithdraw token={token} />
+														<RequestSend token={token} />
 													</View>
 												)}
 											/>
@@ -150,7 +143,7 @@ export default function AssetsScreen() {
 	// )
 }
 
-function DepositWithdraw({token}){
+function RequestSend({token}){
 	const [mode, setMode] = React.useState('None')
 
 	React.useEffect(() => {
@@ -164,16 +157,16 @@ function DepositWithdraw({token}){
 
 	return mode === 'None' ? (
 		<View style={[layout.row, layout.spaceEvenly]}>
-			<Button onPress={() => setMode('Deposit')}>Deposit</Button>
-			<Button onPress={() => setMode('Withdraw')}>Withdraw</Button>
+			<Button onPress={() => setMode('Request')}>Request</Button>
+			<Button onPress={() => setMode('Send')}>Send</Button>
 		</View>
-	) : mode === 'Deposit' ? (
+	) : mode === 'Request' ? (
 		<CardSection>
-			<TokenDeposit token={token} />
+			<TokenRequest token={token} />
 		</CardSection>
-	) : mode === 'Withdraw' ? (
+	) : mode === 'Send' ? (
 		<CardSection>
-			<TokenWithdraw
+			<TokenSend
 				token={token}
 				maxAmount={tokenBalances[token.symbol].amount}
 			/>

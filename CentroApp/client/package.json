@@ -13,6 +13,8 @@
 		"preset": "jest-expo"
 	},
 	"dependencies": {
+		"@celo/connect": "^1.1.0",
+		"@celo/contractkit": "^1.1.0",
 		"@celo/dappkit": "^1.1.0",
 		"@expo/vector-icons": "^12.0.0",
 		"@react-native-community/masked-view": "0.1.10",
@@ -23,6 +25,8 @@
 		"crypto-browserify": "^3.12.0",
 		"expo": "~40.0.0",
 		"expo-asset": "~8.2.1",
+		"expo-barcode-scanner": "^10.1.2",
+		"expo-clipboard": "^1.0.2",
 		"expo-constants": "~9.3.3",
 		"expo-file-system": "^10.0.0",
 		"expo-font": "~8.4.0",
@@ -36,7 +40,7 @@
 		"path-browserify": "^1.0.1",
 		"react": "17.0.2",
 		"react-dom": "17.0.2",
-		"react-native": "https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz",
+		"react-native": "^0.63.4",
 		"react-native-elements": "^3.3.2",
 		"react-native-gesture-handler": "~1.8.0",
 		"react-native-safe-area-context": "3.1.9",

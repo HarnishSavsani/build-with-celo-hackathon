@@ -64,6 +64,24 @@ const dapps = [{
 		backgroundColor: 'hsl(50, 96%, 90%)',
 		color: 'hsl(52, 77%, 45%)'
 	}
+}, {
+	image: require('../assets/images/carbonoffset-thumbnail.png'),
+	name: ['carbon', 'offset'],
+	description: 'go carbon negative\nfor free!',
+	navigationLink: 'CarbonOffsetScreen',
+	theme: {
+		backgroundColor: 'hsl(105, 96%, 90%)',
+		color: 'hsl(105, 67%, 45%)'
+	}
+}, {
+	image: require('../assets/images/impactmarket-thumbnail.png'),
+	name: ['impact', 'market'],
+	description: 'donate directly to\nUBI beneficiaries',
+	navigationLink: 'ImpactMarketScreen',
+	theme: {
+		backgroundColor: 'hsl(222, 96%, 93%)',
+		color: 'hsl(222, 80%, 56%)'
+	}
 }, /*{
 	image: '',
 	name: ['poof', 'cash'],
@@ -72,14 +90,17 @@ const dapps = [{
 }*/]
 
 
-export default function AppsScreen({ navigation }: StackScreenProps<AppsStackParamList, 'AppsScreen'>) {
+export function AppsScreen({ navigation }: StackScreenProps<AppsStackParamList, 'AppsScreen'>) {
 	return (
 		<ScrollView>
 			<Container>
 				<View style={layout.grid}>
 					{ dapps.map(({image, name, description, navigationLink, theme}) => (
 						<TouchableOpacity key={name.join('')} onPress={() => navigation.navigate(navigationLink as keyof AppsStackParamList)}>
-							<Card style={[layout.gridItem, layout.centered, layout.bordered, layout.shadowed, {backgroundColor: theme.backgroundColor, borderColor: theme.color, shadowColor: theme.color}]}>
+							<Card
+								lightColor={theme.backgroundColor}
+								style={[layout.gridItem, layout.centered, layout.bordered, layout.shadowed, {borderColor: theme.color, shadowColor: theme.color}]}
+							>
 								<Image source={image} style={{width: '85%', height: '52%', margin: 7}} />
 								<Text style={[{color: theme.color}, text.h3]}>
 									<Text style={[{color: theme.color}]}>{name[0]}</Text>

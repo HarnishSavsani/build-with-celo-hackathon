@@ -1,24 +1,37 @@
 import * as React from 'react'
 
-import { useMachine } from '@xstate/react'
-import { walletMachine } from '../state/wallet'
+import { useWallet } from '../state/wallet'
 
 import { layout, text } from '../styles/styles'
 
 import { ActivityIndicator, View } from 'react-native'
-import { Button, Spacer, Text } from '../components/ThemedComponents'
+import { Button, Image, Spacer, Text } from '../components/ThemedComponents'
+import { Address } from '../components/Address'
 
-export default function WalletStatus() {
-	const [state, send] = useMachine(walletMachine)
+const wallets = [{
+	name: 'Valora',
+	icon: require('../assets/images/valora-logo.png')
+}]
+
+export function WalletStatus() {
+	const [state, send] = useWallet()
 	const { address, phoneNumber, walletName, error } = state.context
+
+	const wallet = wallets.find(wallet => wallet.name === walletName)
 
 	return <>
 		{state.matches('disconnected') ?
 			<>
 				<Text style={text.h3}>No wallet connected.</Text>
 				<Spacer />
-				<View style={layout.row}>
-					<Button onPress={() => send('CONNECT')}>Connect Valora</Button>
+				<View style={layout.centered}>
+					{wallets.map(({name, icon}) => (
+						<Button icon={icon} onPress={() => send('CONNECT', {wallet: name})}>Connect {name}</Button>
+					))}
+					<Spacer />
+					<Button>Create New Wallet</Button>
+					<Spacer />
+					<Button>Import Account Key</Button>
 				</View>
 			</>
 		: state.matches('connecting') ?
@@ -45,11 +58,15 @@ export default function WalletStatus() {
 				</View>
 			</>
 		: state.matches('connected') ?
-			<View style={layout.row}>
-				<Text style={text.h3}>{walletName}</Text>
-				<Text style={text.p}>Address: {address}</Text>
-				<Text style={text.p}>Phone Number: {phoneNumber}</Text>
-			</View>
+			<>
+				<View style={layout.row}>
+					<Image source={wallet.icon} width={30} height={30} />
+					<Spacer />
+					<Text style={text.h2}>{walletName}</Text>
+				</View>
+				<Address address={address} />
+				<Text style={text.p}>Phone: {phoneNumber}</Text>
+			</>
 		: null}
 	</>
 }

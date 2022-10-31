@@ -1,19 +1,51 @@
 import * as React from 'react'
 
-import { layout, text } from '../styles/styles'
+import { useCurrentTransaction } from '../state/currentTransaction'
+import { useNavigation } from '@react-navigation/native'
+import { useWallet } from '../state/wallet'
+
+import { layout } from '../styles/styles'
 
 import { View } from 'react-native'
-import { Button, Separator, Spacer, Text } from './ThemedComponents'
-import TokenAmountSelect from './TokenAmountSelect'
-import { TextInput } from 'react-native-gesture-handler'
+import { Button, Separator } from './ThemedComponents'
+import { TokenAmountSelect } from './TokenAmountSelect'
 
-export default function TokenDeposit({token}) {
+const transactionName = 'Deposit'
+const contractAddress = ''
+
+export function TokenDeposit({token, maxAmount}) {
+	const [amount, setAmount] = React.useState(maxAmount)
+	const [transaction, setTransaction] = useCurrentTransaction()
+
+	const [address] = useWallet()
+
+	const navigation = useNavigation()
+
+
+	function onStartTransaction(){
+		setTransaction({
+			transactionName,
+			token,
+			from: address,
+			to: contractAddress,
+			amount,
+			// transactionObject
+		})
+
+		navigation.navigate('TransactionScreen')
+	}
+
 	return (
 		<View>
-			<Text style={text.h3}>Deposit {token.name}</Text>
-			<Spacer />
-			<View style={[layout.row, layout.centered]}>
-				<Button>Done</Button>
+			<TokenAmountSelect
+				action={transactionName}
+				token={token}
+				maxAmount={maxAmount}
+				amount={amount} setAmount={setAmount}
+			/>
+			<Separator />
+			<View style={[layout.row, layout.spaceEvenly]}>
+				<Button onPress={onStartTransaction}>{transactionName}</Button>
 			</View>
 		</View>
 	)

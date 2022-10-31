@@ -21,6 +21,8 @@ export type AppsStackParamList = {
 	UbeswapScreen: undefined
 	BlockExplorerScreen: undefined
 	PollenScreen: undefined
+	CarbonOffsetScreen: undefined
+	ImpactMarketScreen: undefined
 	PoofCashScreen: undefined
 }
 
