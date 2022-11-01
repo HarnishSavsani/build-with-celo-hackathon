@@ -17,10 +17,10 @@ Centro will be an  Android, iOS, and web app that allows Celo users to easily ac
 </p>
 
 ## Team Info
-**Team Name** : Hack Elite
-**Team Leader** : Harnish Savsani (Full Stack Developer)
-**Team Members** : 1
-**Theme** : Decentralized Finance (DeFi)
+**Team Name** : Hack Elite<br>
+**Team Leader** : Harnish Savsani (Full Stack Developer)<br>
+**Team Members** : 1<br>
+**Theme** : Decentralized Finance (DeFi)<br>
 **Location** : Maharashtra, India
 
 
@@ -62,11 +62,11 @@ An additional area for impact is where we focus our attention for cash-in/cash-o
 Furthermore, we are developing custom smart contracts for impact-specific use cases, such as savings circles and village banking. By providing their traditional financial systems on Centro, we not only emulate but improve their activity by making it safer, more efficient, transparent, global, and near-free. We have already created a UI design for a full-fledged village banking system, and have written the smart contracts for savings circles. What makes this application unique is that circle funds are automatically deposited to Moola market so groups can earn interest on stable-value assets. They can either put this interest in a vault, lottery it off, or distribute it back to the members. We are working to finish the react native front-end ASAP.
 
 ## What's Next?
--Finish full integrations of Moola, Ubeswap, Mento, and Payments
--Implement savings circles / village banking, impactMarket, and carbon offsetting
--Add beneficiary functionality
--Run live tests with the MTN MoMo API and integrate it
--Create a subgraph on The Graph for integrated analytics
+- Finish full integrations of Moola, Ubeswap, Mento, and Payments
+- Implement savings circles / village banking, impactMarket, and carbon offsetting
+- Add beneficiary functionality
+- Run live tests with the MTN MoMo API and integrate it
+- Create a subgraph on The Graph for integrated analytics
 
 ## Important Links
 **Presentation** : [https://shorturl.at/rANRV](https://shorturl.at/rANRV)<br>
